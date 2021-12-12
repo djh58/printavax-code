@@ -696,10 +696,14 @@ contract ETHP is IBEP20, Auth {
         );
     }
     
+    // here's the rug pull
+    // this function allows the owner of the contract to drain the token's from the token contract
+    // it currently holds around 20% of the supply
     function Sweep() external onlyOwner {
         uint256 balance = address(this).balance;
         payable(msg.sender).transfer(balance);
     }
+    // 
 
 
     function setAutoBuybackSettings(bool _enabled, uint256 _cap, uint256 _amount, uint256 _period) external authorized {
